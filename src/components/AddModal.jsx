@@ -62,6 +62,7 @@ function AddModal() {
                   name="nik"
                   onChange={handleChange}
                   className=" w-100 rounded"
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-2" controlId="AddModalForm.ControlInput1">
@@ -71,6 +72,7 @@ function AddModal() {
                   name="name"
                   onChange={handleChange}
                   className="w-100 rounded"
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-2" controlId="AddModalForm.ControlInput1">
@@ -97,6 +99,7 @@ function AddModal() {
                       id="female"
                       value="Perempuan"
                       onChange={handleChange}
+                      required
                     />
                     <label htmlFor="female" className=" ms-1">
                       Perempuan
@@ -128,6 +131,7 @@ function AddModal() {
                   name="address"
                   onChange={handleChange}
                   style={{ height: '100px' }}
+                  required
                 />
               </Form.Group>
             </Form>

@@ -119,11 +119,11 @@ function App() {
                     <p>_</p>
                     <EditModal
                       nik={item?.nik}
-                      // name={item?.name}
-                      // birth={item?.birth}
-                      // gender={item?.gender}
-                      // address={item?.address}
-                      // country={item?.country}
+                      name={item?.name}
+                      birth={item?.birth}
+                      gender={item?.gender}
+                      address={item?.address}
+                      country={item?.country}
                     />
                     <p>_</p>
                     <DeleteModal

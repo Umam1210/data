@@ -32,11 +32,11 @@ function EditModal(props) {
     if (DataEdit) {
       setForm({
         ...form,
-        name: DataEdit?.name,
-        gender: DataEdit?.gender,
-        date: DataEdit?.date,
-        address: DataEdit?.address,
-        country: DataEdit?.country,
+        name: props?.name,
+        gender: props?.gender,
+        date: props?.date,
+        address: props?.address,
+        country: props?.country,
       });
     }
   }, [DataEdit]);
@@ -91,6 +91,7 @@ function EditModal(props) {
                   name="name"
                   onChange={handleChange}
                   className="w-100 rounded"
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-2" controlId="AddModalForm.ControlInput1">
@@ -105,7 +106,7 @@ function EditModal(props) {
                       id="male"
                       value="Laki-Laki"
                       onChange={handleChange}
-                      checked={form.gender === "Laki-Laki"}
+                      checked={form?.gender === "Laki-Laki"}
                     />
                     <label htmlFor="male" className="me-3 ms-1">
                       Laki-Laki
@@ -117,7 +118,7 @@ function EditModal(props) {
                       id="female"
                       value="Perempuan"
                       onChange={handleChange}
-                      checked={form.gender === "Perempuan"}
+                      checked={form?.gender === "Perempuan"}
                     />
                     <label htmlFor="female" className=" ms-1">
                       Perempuan
@@ -150,6 +151,7 @@ function EditModal(props) {
                   value={form?.address}
                   onChange={handleChange}
                   style={{ height: '100px' }}
+                  required
                 />
               </Form.Group>
             </Form>
