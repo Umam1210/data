@@ -15,31 +15,32 @@ function EditModal(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  let { data: DataEdit } = useQuery("dataEdit", async () => {
-    const response = await API.get("/data/" + props?.nik);
-    return response.data;
-  });
-  
+  // let { data: DataEdit } = useQuery("dataEdit", async () => {
+  //   const response = await API.get("/data/" + props?.nik);
+  //   return response.data;
+  // });
+
   const [form, setForm] = useState({
+    id: props?.id,
     nik: props?.nik,
-    name: "",
-    gender: "",
-    date: "",
-    address: "",
-    country: "",
+    name: props?.name,
+    gender: props?.gender,
+    birth: props?.birth,
+    address: props?.address,
+    country: props?.country,
   });
-  useEffect(() => {
-    if (DataEdit) {
-      setForm({
-        ...form,
-        name: props?.name,
-        gender: props?.gender,
-        date: props?.date,
-        address: props?.address,
-        country: props?.country,
-      });
-    }
-  }, [DataEdit]);
+  // useEffect(() => {
+  //   if (DataEdit) {
+  //     setForm({
+  //       ...form,
+  //       name: props?.name,
+  //       gender: props?.gender,
+  //       birth: props?.birth,
+  //       address: props?.address,
+  //       country: props?.country,
+  //     });
+  //   }
+  // }, []);
 
   const handleChange = (e) => {
     setForm({
@@ -52,7 +53,7 @@ function EditModal(props) {
     try {
       e.preventDefault();
 
-      await API.patch("/data", form);
+      await API.post("/data", form);
       alert("berhasil edit data");
     } catch (error) {
       console.log(error);
@@ -70,12 +71,13 @@ function EditModal(props) {
             <AiFillIdcard style={{ fontSize: "50" }} className="ms-4" />
             <h4 className='mt-2 ms-3'>Aplikasi Data Pribadi</h4>
           </div>
-          <h4 className='ms-4'>Tambah Data Baru</h4>
+          <h4 className='ms-4'>Edit Data</h4>
           <Modal.Body>
             <Form>
               <Form.Group className="mb-2" controlId="AddModalForm.ControlInput1">
                 <p>NIK</p>
                 <input
+                  style={{ cursor: "not-allowed", backgroundColor:"grey"}}
                   type="text"
                   value={props?.nik}
                   name="nik"
@@ -132,7 +134,7 @@ function EditModal(props) {
                   type="date"
                   id="date"
                   name="birth"
-                  value={form?.date}
+                  value={form?.birth}
                   onChange={handleChange}
                   required
                   className='w-100 rounded'
@@ -162,7 +164,7 @@ function EditModal(props) {
           </label>
           <select
             className="rounded py-1 ms-3"
-            style={{width:"94%"}}
+            style={{ width: "94%" }}
             name="country"
             id="country"
             onChange={handleChange}
@@ -170,7 +172,7 @@ function EditModal(props) {
             value={form?.country}
           >
             <option value="" selected disabled>
-            kewarganegaraan
+              kewarganegaraan
             </option>
             <option value="Indonesia">Indonesia</option>
             <option value="Jepang">Jepang</option>
@@ -182,11 +184,11 @@ function EditModal(props) {
           </select>
           <Modal.Footer >
             <Button variant="primary" type='submit'
-            onClick={(e) => {
-              handleClose()
-              handleSubmit.mutate(e)
-            }}
-             className="w-25" >
+              onClick={(e) => {
+                handleClose()
+                handleSubmit.mutate(e)
+              }}
+              className="w-25" >
               Simpan
             </Button>
             <Button variant="danger" onClick={handleClose} className="w-25">

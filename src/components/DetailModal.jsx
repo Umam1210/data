@@ -12,10 +12,10 @@ function DetailModal(props) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  let { data } = useQuery("dataDetail", async () => {
-    const response = await API.get("/data/" + props?.nik);
-    return response.data;
-  });
+  // let { data } = useQuery("dataDetail", async () => {
+  //   const response = await API.get("/data/" + props?.nik);
+  //   return response.data;
+  // });
 
   return (
     <>

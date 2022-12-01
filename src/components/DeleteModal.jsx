@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
 import { API } from '../config/API'
@@ -13,7 +12,7 @@ function DeleteModal(props) {
     const handleShow = () => setShow(true);
 
     let handleDelete = async () => {
-      await API.delete("/data/" + props?.nik);
+      await API.delete("/data/" + props?.id);
       alert("berhasil hapus data")
     };
 
@@ -25,7 +24,7 @@ function DeleteModal(props) {
 
         <Modal show={show} onHide={handleClose}>
 
-          <Modal.Title className='mx-5 my-5'>Anda Yakin Menghapus data { } ?</Modal.Title>
+          <Modal.Title className='mx-5 my-5'>Anda Yakin Menghapus data ke {props?.id} ?</Modal.Title>
 
           <Modal.Footer>
             <Button variant="secondary"

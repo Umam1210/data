@@ -37,8 +37,8 @@ function AddModal() {
       await API.post("/data", form);
       alert("berhasil menambah data");
     } catch (error) {
-      console.log(error);
-    }
+      alert("gagal menambahkan data");
+    } 
   });
   return (
     <>
